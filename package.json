@@ -1,0 +1,40 @@
+{
+  "name": "sppagecontextinfo",
+  "description": "_spPageContextInfo object for SharePoint classic and modern sites",
+  "version": "1.0.0",
+  "author": {
+    "name": "Tomasz Wojtasik",
+    "email": "tomaszoida@o2.pl"
+  },
+  "repository": "https://github.com/tomaszoida/sppagecontextinfo.git",
+  "main": "dist/sppagecontextinfo.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run",
+    "debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --debug",
+    "build": "npm run clean && gulp && webpack --mode production",
+    "bat": "npm run build & npm run test",
+    "clean": "rimraf dist && rimraf coverage && rimraf types"
+  },
+  "keywords": [
+    "sharepoint",
+    "_spPageContextInfo",
+    "spPageContextInfo",
+    "modern",
+    "classic"
+  ],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^8.10.17",
+    "core-js": "^2.5.7",
+    "rimraf": "^2.6.2",
+    "ts-loader": "^4.3.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^4.0.2"
+  }
+}
