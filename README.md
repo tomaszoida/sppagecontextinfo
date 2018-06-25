@@ -12,7 +12,7 @@ Use SPPageContextInfo.get method to access _spPageContextInfo object. Context ob
 
 ```
 import { SPPageContextInfo } from 'sppagecontextinfo';
-SPPageContextInfo.get().then(context=>{
+SPPageContextInfo.getContext().then(context=>{
   console.log(context.webAbsoluteUrl);
 });
 ```
