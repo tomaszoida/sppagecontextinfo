@@ -1,7 +1,7 @@
 {
   "name": "sppagecontextinfo",
   "description": "_spPageContextInfo object for SharePoint classic and modern sites",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Tomasz Wojtasik",
     "email": "tomaszoida@o2.pl"
