@@ -10,7 +10,7 @@ module.exports = {
     filename: "./dist/[name].js",
     library: "sppagecontextinfo",
     libraryTarget: "umd",
-    umdNamedDefine: true
+    umdNamedDefine: false
   },
   devtool: 'source-map',
   resolve: {
