@@ -1,7 +1,7 @@
 {
   "name": "sppagecontextinfo",
   "description": "_spPageContextInfo object for SharePoint classic and modern sites",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": {
     "name": "Tomasz Wojtasik",
     "email": "tomaszoida@o2.pl"
@@ -28,13 +28,13 @@
   "devDependencies": {
     "@types/node": "^8.10.17",
     "core-js": "^2.5.7",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^4.0.2",
     "rimraf": "^2.6.2",
     "ts-loader": "^4.3.0",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3",
-    "webpack": "^4.9.1",
-    "webpack-cli": "^2.1.4",
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^4.0.2"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }
