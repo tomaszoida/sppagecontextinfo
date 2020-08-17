@@ -39,7 +39,8 @@ export class SPPageContextInfo {
                     console.error('SPPageContextInfo: Could not get new context because of timeout')
                     resolve(newContext)
                 }
-                if (!observedURL.toLowerCase().startsWith(contextURL.toLowerCase())) {
+                observedURL = this.splitURL(observedURL)["beforeSitePageURL"]
+                if (!(observedURL === contextURL.toLowerCase())) {
                     SPPageContextInfo.contextChooser().then(spPageContext => {
                         newContext = spPageContext;
                         contextURL = newContext.webAbsoluteUrl;
@@ -51,5 +52,14 @@ export class SPPageContextInfo {
                 }
             }, intervalTimeMillis)
         })
+    }
+
+    private static splitURL(url: string) {
+        url = url.toLowerCase();
+        if (url.includes('/sitepages/')) {
+            var splittedUrl = url.split('/sitepages/')
+            return { beforeSitePageURL: splittedUrl[0], afterSitePageURL: splittedUrl[1] }
+        }
+        return { beforeSitePageURL: url, afterSitePageURL: "" }
     }
 }
