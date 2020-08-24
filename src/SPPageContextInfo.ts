@@ -40,7 +40,9 @@ export class SPPageContextInfo {
                     resolve(newContext)
                 }
 
-                if (!(observedURL.toLowerCase() === absoluteUrl.toLowerCase())) {
+                if (observedURL.toLowerCase() !== absoluteUrl.toLowerCase() && 
+                    observedURL.toLowerCase() !== newContext.webAbsoluteUrl.toLowerCase()) 
+                {
                     SPPageContextInfo.contextChooser().then(spPageContext => {
                         newContext = spPageContext;
                         absoluteUrl = this.getAbsoluteUrl(newContext)
