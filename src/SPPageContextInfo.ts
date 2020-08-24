@@ -28,9 +28,9 @@ export class SPPageContextInfo {
         return new Promise(resolve => {
 
             var counter = 0;
-            var contextURL: string = context.webAbsoluteUrl;
             var newContext = context;
             var maxCount = Math.ceil(timeoutMillis / intervalTimeMillis);
+            var absoluteUrl = this.getAbsoluteUrl(newContext)
 
             var interval = setInterval(() => {
                 counter++;
@@ -39,12 +39,12 @@ export class SPPageContextInfo {
                     console.error('SPPageContextInfo: Could not get new context because of timeout')
                     resolve(newContext)
                 }
-                observedURL = this.splitURL(observedURL)["beforeSitePageURL"]
-                if (!(observedURL === contextURL.toLowerCase())) {
+
+                if (!(observedURL.toLowerCase() === absoluteUrl.toLowerCase())) {
                     SPPageContextInfo.contextChooser().then(spPageContext => {
                         newContext = spPageContext;
-                        contextURL = newContext.webAbsoluteUrl;
-                    })
+                        absoluteUrl = this.getAbsoluteUrl(newContext)
+                    });
 
                 } else {
                     clearInterval(interval)
@@ -54,12 +54,7 @@ export class SPPageContextInfo {
         })
     }
 
-    private static splitURL(url: string) {
-        url = url.toLowerCase();
-        if (url.includes('/sitepages/')) {
-            var splittedUrl = url.split('/sitepages/')
-            return { beforeSitePageURL: splittedUrl[0], afterSitePageURL: splittedUrl[1] }
-        }
-        return { beforeSitePageURL: url, afterSitePageURL: "" }
+    private static getAbsoluteUrl( context: any){
+        return window.location.origin + context.serverRequestPath
     }
 }
