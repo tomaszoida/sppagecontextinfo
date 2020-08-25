@@ -40,6 +40,7 @@ export class SPPageContextInfo {
                     resolve(newContext)
                 }
 
+                observedURL = this.trimSlash(observedURL);
                 if (observedURL.toLowerCase() !== absoluteUrl.toLowerCase() && 
                     observedURL.toLowerCase() !== newContext.webAbsoluteUrl.toLowerCase()) 
                 {
@@ -58,5 +59,12 @@ export class SPPageContextInfo {
 
     private static getAbsoluteUrl( context: any){
         return window.location.origin + context.serverRequestPath
+    }
+
+    private static trimSlash(urlString: string){
+        if(urlString.endsWith('/')){
+            return urlString.slice(0, -1)
+        }
+        return urlString
     }
 }
