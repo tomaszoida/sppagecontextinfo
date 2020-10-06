@@ -40,7 +40,7 @@ export class SPPageContextInfo {
                     resolve(newContext)
                 }
 
-                observedURL = this.trimSlash(observedURL);
+                observedURL = this.trim(observedURL);
                 if (observedURL.toLowerCase() !== absoluteUrl.toLowerCase() && 
                     observedURL.toLowerCase() !== newContext.webAbsoluteUrl.toLowerCase()) 
                 {
@@ -61,10 +61,12 @@ export class SPPageContextInfo {
         return window.location.origin + context.serverRequestPath
     }
 
-    private static trimSlash(urlString: string){
+    private static trim(urlString: string){
         if(urlString.endsWith('/')){
             return urlString.slice(0, -1)
         }
+        urlString = urlString.split('#')[0];
+        urlString = urlString.split('?')[0];
         return urlString
     }
 }
